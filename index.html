@@ -1,11 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My GitHub Pages Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muzzammil Malik | Bioinformatician & NLP Researcher</title>
+  <meta name="description" content="Bioinformatician and NLP researcher specializing in sequence analysis, poliovirus genetics, and machine learning. Master's student at Uppsala University.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --light: #f8f9fa;
+      --dark: #2c3e50;
+      --gray: #7f8c8d;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background: #fff;
+    }
+    header {
+      background: linear-gradient(135deg, var(--primary), #1a2634);
+      color: white;
+      text-align: center;
+      padding: 6rem 1rem;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.4rem;
+      opacity: 0.9;
+    }
+    nav {
+      background: var(--dark);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.8rem 1.5rem;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    nav a:hover { background: var(--accent); }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .about {
+      background: var(--light);
+      text-align: center;
+    }
+    .about img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid var(--accent);
+      margin-bottom: 1.5rem;
+      object-fit: cover;
+    }
+    h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      text-align: center;
+    }
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .skill-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .skill-card i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .projects {
+      background: #ecf0f1;
+    }
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+    .project {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .project img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .project-content {
+      padding: 1.5rem;
+    }
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .social-links a {
+      color: white;
+      font-size: 1.8rem;
+      margin: 0 1rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover { color: var(--accent); }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.4rem; }
+      header p { font-size: 1.2rem; }
+    }
+  </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>This is my first GitHub Pages website123!</p>
+
+  <header>
+    <h1>Muzzammil Malik</h1>
+    <p>Bioinformatician | NLP Researcher | Master's in Language Technology</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section id="about" class="about">
+    <img src="https://via.placeholder.com/180?text=Photo" alt="Muzzammil Malik">
+    <h2>About Me</h2>
+    <p>I'm a second-year Master's student in Language Technology at Uppsala University with a strong focus on bioinformatics, natural language processing, and genomic sequence analysis. I specialize in developing tools for poliovirus genetics, mutation detection, and data processing pipelines. Passionate about open-source science and teaching, I have built more than 20 bioinformatics tools and enjoy turning complex data into actionable insights.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills & Technologies</h2>
+    <div class="skills">
+      <div class="skill-card">
+        <i class="fas fa-dna"></i>
+        <h3>Bioinformatics</h3>
+        <p>FASTA processing, sequence alignment, mutation analysis, poliovirus molecular clock</p>
+      </div>
+      <div class="skill-card">
+        <i class="fab fa-python"></i>
+        <h3>Programming</h3>
+        <p>Python, R (Biostrings, dplyr, ggplot2), Bash</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-brain"></i>
+        <h3>Machine Learning & NLP</h3>
+        <p>PyTorch, Hugging Face, BERT, text classification, explainable AI</p>
+      </div>
+      <div class="skill-card">
+        <i class="fas fa-tools"></i>
+        <h3>Tools & Platforms</h3>
+        <p>GitHub Pages, R Shiny, Flask, Excel automation, 3D Slicer</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <h2>Selected Projects & Tools</h2>
+    <div class="project-grid">
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200/3498db/ffffff?text=Poliovirus+Linkage+Finder" alt="Poliovirus Linkage Finder">
+        <div class="project-content">
+          <h3>Poliovirus Genetic Linkage Finder</h3>
+          <p>Algorithm and tool for determining genetic relatedness of poliovirus samples using mutation rates and molecular clock.</p>
+        </div>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200/2ecc71/ffffff?text=FASTA+Tools+Suite" alt="FASTA Tools">
+        <div class="project-content">
+          <h3>FASTA Tools Suite</h3>
+          <p>Collection of 20+ open-source tools for sequence extraction, deduplication, metadata annotation, and more.</p>
+        </div>
+      </div>
+      <div class="project">
+        <img src="https://via.placeholder.com/400x200/e74c3c/ffffff?text=NLP+Thesis" alt="NLP Thesis">
+        <div class="project-content">
+          <h3>Explainable AI for BERT Models</h3>
+          <p>Master's thesis on interpretability methods for transformer-based models in NLP.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get in Touch</h2>
+    <p style="text-align:center; font-size:1.2rem;">
+      Feel free to reach out for collaborations, research discussions, or tool requests.
+    </p>
+    <div class="social-links" style="text-align:center; margin-top:2rem;">
+      <a href="https://github.com/Muzzammil-malick" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Muzzammil Malik. Built with GitHub Pages.</p>
+  </footer>
+
 </body>
 </html>
