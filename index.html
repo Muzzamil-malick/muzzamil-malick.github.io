@@ -1,232 +1,619 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muzzammil Malik | Bioinformatician & NLP Researcher</title>
-  <meta name="description" content="Bioinformatician and NLP researcher specializing in sequence analysis, poliovirus genetics, and machine learning. Master's student at Uppsala University.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muzzamil Ahmed | Bioinformatician (NIH Pakistan)</title>
+  <meta name="description" content="Muzzamil Ahmed, Bioinformatician at NIH Pakistan. Custom bioinformatics tools, pipelines, and R scripts for genomics and public health workflows." />
+  <meta name="author" content="Muzzamil Ahmed" />
+
   <style>
-    :root {
-      --primary: #2c3e50;
-      --accent: #3498db;
-      --light: #f8f9fa;
-      --dark: #2c3e50;
-      --gray: #7f8c8d;
+    :root{
+      --bg: #0b1220;
+      --panel: rgba(255,255,255,0.06);
+      --panel2: rgba(255,255,255,0.09);
+      --text: rgba(255,255,255,0.9);
+      --muted: rgba(255,255,255,0.68);
+      --brand: #6ee7ff;
+      --brand2:#a78bfa;
+      --ok: #22c55e;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --ring: rgba(110,231,255,0.35);
+      --shadow: 0 18px 60px rgba(0,0,0,0.35);
+      --radius: 18px;
+      --radius2: 26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      color: var(--dark);
-      background: #fff;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 15%, rgba(110,231,255,0.18), transparent 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(167,139,250,0.16), transparent 55%),
+        radial-gradient(900px 700px at 70% 85%, rgba(34,197,94,0.10), transparent 55%),
+        var(--bg);
+      line-height: 1.55;
     }
-    header {
-      background: linear-gradient(135deg, var(--primary), #1a2634);
-      color: white;
-      text-align: center;
-      padding: 6rem 1rem;
+    a{color:inherit}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 70px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;padding:14px 16px;border-radius: var(--radius2);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      backdrop-filter: blur(10px);
+      position: sticky; top: 10px; z-index: 10;
     }
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
+    .brand{
+      display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px;
     }
-    header p {
-      font-size: 1.4rem;
-      opacity: 0.9;
+    .badge{
+      font-family: var(--mono);
+      font-size:12px;
+      padding:6px 10px;border-radius:999px;
+      background: linear-gradient(135deg, rgba(110,231,255,0.18), rgba(167,139,250,0.18));
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--muted);
+      white-space: nowrap;
     }
-    nav {
-      background: var(--dark);
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
+    .navlinks{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .navlinks a{
+      text-decoration:none;
+      padding:8px 10px;border-radius:999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--muted);
+      transition: 140ms ease;
+    }
+    .navlinks a:hover{
+      transform: translateY(-1px);
+      color: var(--text);
+      border-color: rgba(110,231,255,0.35);
+      box-shadow: 0 0 0 6px rgba(110,231,255,0.08);
+    }
+
+    .hero{
+      margin-top:18px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+    }
+    @media (max-width: 920px){
+      .hero{grid-template-columns:1fr}
+      .nav{position:relative; top:0}
+    }
+    .card{
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card .pad{padding:18px}
+    .headline{
+      font-size: 38px;
+      line-height: 1.12;
+      margin: 6px 0 10px;
+      letter-spacing: -.7px;
+    }
+    .sub{
+      color: var(--muted);
+      font-size: 15.5px;
+      margin:0;
+    }
+    .pillrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .pill{
+      padding:9px 12px;border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      font-size: 13px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .dot{width:9px;height:9px;border-radius:50%}
+    .dot.tools{background:#60a5fa}
+    .dot.pipe{background:#22c55e}
+    .dot.r{background:#f59e0b}
+
+    .cta{
+      margin-top:14px;
+      display:flex;gap:10px;flex-wrap:wrap;
+    }
+    .btn{
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      transition: 150ms ease;
+      font-weight: 600;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(110,231,255,0.35); box-shadow: 0 0 0 6px rgba(110,231,255,0.08)}
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(110,231,255,0.22), rgba(167,139,250,0.22));
+      border-color: rgba(110,231,255,0.35);
+    }
+    .small{
+      font-size: 12.5px;color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .profile{
+      display:grid;gap:12px;
+    }
+    .mini{
+      background: var(--panel2);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: var(--radius2);
+      padding:16px;
+    }
+    .mini h3{margin:0 0 8px;font-size:16px}
+    .mini p{margin:0;color:var(--muted);font-size:14px}
+
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width: 720px){ .grid2{grid-template-columns:1fr} }
+
+    section{margin-top:18px}
+    .sectionTitle{
+      display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
+      margin: 6px 0 10px;
+    }
+    .sectionTitle h2{margin:0;font-size:20px;letter-spacing:-.2px}
+    .sectionTitle .hint{color:var(--muted);font-size:13px}
+
+    .filters{display:flex;gap:8px;flex-wrap:wrap}
+    .chip{
+      padding:8px 10px;border-radius:999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      cursor:pointer;
+      transition: 140ms ease;
+      font-size: 13px;
+      user-select:none;
+    }
+    .chip.active{
+      color: var(--text);
+      border-color: rgba(110,231,255,0.35);
+      box-shadow: 0 0 0 6px rgba(110,231,255,0.08);
+      background: rgba(110,231,255,0.10);
+    }
+
+    .projects{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){ .projects{grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 640px){ .projects{grid-template-columns: 1fr;} }
+
+    .proj{
+      padding:14px;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+      transition: 150ms ease;
+      min-height: 140px;
+      display:flex;flex-direction:column;gap:8px;
+    }
+    .proj:hover{
+      transform: translateY(-2px);
+      border-color: rgba(110,231,255,0.30);
+      box-shadow: 0 0 0 6px rgba(110,231,255,0.07);
+    }
+    .projTop{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+    .proj h3{margin:0;font-size:15.5px}
+    .tag{
+      font-family: var(--mono);
+      font-size: 11px;
+      padding:6px 8px;border-radius:999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      background: rgba(255,255,255,0.04);
+      white-space:nowrap;
+    }
+    .proj p{margin:0;color:var(--muted);font-size:13.5px}
+    .projMeta{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .kpi{
+      font-family: var(--mono);
+      font-size: 11px;
+      padding:6px 8px;border-radius:999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .media{
+      display:grid;gap:10px;
+    }
+    .media img{
+      width:100%;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+    }
+    .note{
+      color: var(--muted);
+      font-size: 13px;
+      margin:0;
+    }
+
+    footer{
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align:center;
+    }
+
+    /* Modal */
+    .modalBackdrop{
+      position:fixed;inset:0;
+      background: rgba(0,0,0,0.6);
+      display:none;align-items:center;justify-content:center;
+      padding: 18px;
       z-index: 100;
     }
-    nav ul {
-      list-style: none;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
+    .modal{
+      width: min(780px, 100%);
+      border-radius: var(--radius2);
+      background: rgba(14,20,36,0.92);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      backdrop-filter: blur(10px);
     }
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 0.8rem 1.5rem;
-      font-weight: 500;
-      transition: background 0.3s;
+    .modalHead{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
     }
-    nav a:hover { background: var(--accent); }
-    section {
-      padding: 4rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
+    .modalHead strong{font-size:14px}
+    .x{
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 8px 10px;
+      cursor:pointer;
     }
-    .about {
-      background: var(--light);
-      text-align: center;
+    .modalBody{padding: 16px}
+    .modalBody p{margin: 0 0 10px; color: var(--muted)}
+    .twoCol{display:grid;grid-template-columns:1fr 1fr; gap:12px}
+    @media (max-width: 720px){ .twoCol{grid-template-columns:1fr} }
+    .box{
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+      padding: 12px;
     }
-    .about img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 5px solid var(--accent);
-      margin-bottom: 1.5rem;
-      object-fit: cover;
-    }
-    h2 {
-      color: var(--primary);
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      text-align: center;
-    }
-    .skills {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .skill-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .skill-card i {
-      font-size: 2.5rem;
-      color: var(--accent);
-      margin-bottom: 1rem;
-    }
-    .projects {
-      background: #ecf0f1;
-    }
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-    .project {
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    }
-    .project img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .project-content {
-      padding: 1.5rem;
-    }
-    footer {
-      background: var(--dark);
-      color: white;
-      text-align: center;
-      padding: 2rem;
-    }
-    .social-links a {
-      color: white;
-      font-size: 1.8rem;
-      margin: 0 1rem;
-      transition: color 0.3s;
-    }
-    .social-links a:hover { color: var(--accent); }
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.4rem; }
-      header p { font-size: 1.2rem; }
-    }
+    .box h4{margin:0 0 6px;font-size:13px}
+    .box ul{margin:0;padding-left:18px;color:var(--muted);font-size:13.5px}
+    .box li{margin:6px 0}
+    .mono{font-family:var(--mono)}
   </style>
 </head>
+
 <body>
-
-  <header>
-    <h1>Muzzammil Malik</h1>
-    <p>Bioinformatician | NLP Researcher | Master's in Language Technology</p>
-  </header>
-
-  <nav>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <section id="about" class="about">
-    <img src="https://via.placeholder.com/180?text=Photo" alt="Muzzammil Malik">
-    <h2>About Me</h2>
-    <p>I'm a second-year Master's student in Language Technology at Uppsala University with a strong focus on bioinformatics, natural language processing, and genomic sequence analysis. I specialize in developing tools for poliovirus genetics, mutation detection, and data processing pipelines. Passionate about open-source science and teaching, I have built more than 20 bioinformatics tools and enjoy turning complex data into actionable insights.</p>
-  </section>
-
-  <section id="skills">
-    <h2>Skills & Technologies</h2>
-    <div class="skills">
-      <div class="skill-card">
-        <i class="fas fa-dna"></i>
-        <h3>Bioinformatics</h3>
-        <p>FASTA processing, sequence alignment, mutation analysis, poliovirus molecular clock</p>
-      </div>
-      <div class="skill-card">
-        <i class="fab fa-python"></i>
-        <h3>Programming</h3>
-        <p>Python, R (Biostrings, dplyr, ggplot2), Bash</p>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-brain"></i>
-        <h3>Machine Learning & NLP</h3>
-        <p>PyTorch, Hugging Face, BERT, text classification, explainable AI</p>
-      </div>
-      <div class="skill-card">
-        <i class="fas fa-tools"></i>
-        <h3>Tools & Platforms</h3>
-        <p>GitHub Pages, R Shiny, Flask, Excel automation, 3D Slicer</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="projects">
-    <h2>Selected Projects & Tools</h2>
-    <div class="project-grid">
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200/3498db/ffffff?text=Poliovirus+Linkage+Finder" alt="Poliovirus Linkage Finder">
-        <div class="project-content">
-          <h3>Poliovirus Genetic Linkage Finder</h3>
-          <p>Algorithm and tool for determining genetic relatedness of poliovirus samples using mutation rates and molecular clock.</p>
+  <div class="wrap">
+    <div class="nav">
+      <div class="brand">
+        <span style="display:inline-flex;width:34px;height:34px;border-radius:12px;align-items:center;justify-content:center;
+          background:linear-gradient(135deg, rgba(110,231,255,0.22), rgba(167,139,250,0.22));
+          border:1px solid rgba(255,255,255,0.14); box-shadow: 0 0 0 6px rgba(110,231,255,0.06);">
+          🧬
+        </span>
+        <div>
+          <div style="font-size:14px;line-height:1.1">Muzzamil Ahmed</div>
+          <div style="font-size:12px;color:var(--muted)">Bioinformatician • NIH Pakistan</div>
         </div>
       </div>
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200/2ecc71/ffffff?text=FASTA+Tools+Suite" alt="FASTA Tools">
-        <div class="project-content">
-          <h3>FASTA Tools Suite</h3>
-          <p>Collection of 20+ open-source tools for sequence extraction, deduplication, metadata annotation, and more.</p>
+
+      <div class="navlinks">
+        <a href="#projects">Projects</a>
+        <a href="#timeline">Portfolio Chart</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <div class="pad">
+          <div class="badge">Genomics • Public health • Automation • Clean data or chaos wins</div>
+          <h1 class="headline">Building practical bioinformatics tools that save time, reduce errors, and keep labs moving.</h1>
+          <p class="sub">
+            I’m <b>Muzzamil Ahmed</b>, a bioinformatician at <b>NIH Pakistan</b> with 2 years of hands on work in public health workflows.
+            I’ve developed a growing toolkit of custom scripts, pipelines, and utilities for FASTA processing, metadata cleaning, phylogenetics support,
+            reporting, and lab operations.
+          </p>
+
+          <div class="pillrow">
+            <span class="pill"><span class="dot tools"></span>Tools</span>
+            <span class="pill"><span class="dot pipe"></span>Pipelines</span>
+            <span class="pill"><span class="dot r"></span>R Scripts</span>
+            <span class="pill">🧪 COVID lab experience (Molecular Biology)</span>
+          </div>
+
+          <div class="cta">
+            <a class="btn primary" href="#projects">Explore projects</a>
+            <a class="btn" href="#contact">Hire / collaborate</a>
+            <a class="btn" href="https://github.com/your-username" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+
+          <div class="small">
+            Tip: Replace the GitHub and LinkedIn links with your real profiles. Add your email in the Contact section.
+          </div>
         </div>
       </div>
-      <div class="project">
-        <img src="https://via.placeholder.com/400x200/e74c3c/ffffff?text=NLP+Thesis" alt="NLP Thesis">
-        <div class="project-content">
-          <h3>Explainable AI for BERT Models</h3>
-          <p>Master's thesis on interpretability methods for transformer-based models in NLP.</p>
+
+      <div class="profile">
+        <div class="mini">
+          <h3>Current roles</h3>
+          <p>Bioinformatician at NIH Pakistan (2 years)</p>
+          <p>Research Scientist at IIUI</p>
+          <p>Lecturer (Bio/Tech subjects)</p>
+        </div>
+
+        <div class="mini">
+          <h3>Education</h3>
+          <p>BS Bioinformatics</p>
+          <p>MS Biotechnology</p>
+        </div>
+
+        <div class="mini">
+          <h3>Core stack</h3>
+          <p><span class="mono">Python</span>, <span class="mono">R</span>, bash, Nextstrain, FASTA/metadata QC, phylogenetics support, reporting automation</p>
+        </div>
+
+        <div class="mini">
+          <h3>What I care about</h3>
+          <p>Fast, reliable workflows. Clear outputs. Less manual clicking. More science.</p>
         </div>
       </div>
     </div>
-  </section>
 
-  <section id="contact">
-    <h2>Get in Touch</h2>
-    <p style="text-align:center; font-size:1.2rem;">
-      Feel free to reach out for collaborations, research discussions, or tool requests.
-    </p>
-    <div class="social-links" style="text-align:center; margin-top:2rem;">
-      <a href="https://github.com/Muzzammil-malick" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/your-linkedin" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+    <section id="projects" class="card">
+      <div class="pad">
+        <div class="sectionTitle">
+          <h2>Projects</h2>
+          <div class="hint">Filter by type • click any card for details</div>
+        </div>
+
+        <div class="filters" id="filters"></div>
+
+        <div class="projects" id="projectGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="timeline" class="card">
+      <div class="pad">
+        <div class="sectionTitle">
+          <h2>Custom Tools, Pipelines, and R Scripts (2024 to 2025)</h2>
+          <div class="hint">Add your image file into <span class="mono">/assets/portfolio-chart.png</span></div>
+        </div>
+
+        <div class="media">
+          <img src="assets/portfolio-chart.png" alt="Portfolio chart showing tools, pipelines, and R scripts over time" />
+          <p class="note">
+            If the image does not show, create a folder named <span class="mono">assets</span> and put your chart image inside it as
+            <span class="mono">portfolio-chart.png</span>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="card">
+      <div class="pad">
+        <div class="sectionTitle">
+          <h2>About</h2>
+          <div class="hint">Short and real • no fluff</div>
+        </div>
+
+        <div class="grid2">
+          <div class="mini">
+            <h3>Bioinformatics meets the lab</h3>
+            <p>
+              I work across genomics data processing and practical lab operations. That means I build tools that don’t just look good in theory,
+              they actually help analysts and lab teams finish work faster with fewer mistakes.
+            </p>
+          </div>
+          <div class="mini">
+            <h3>What I build</h3>
+            <p>
+              FASTA utilities, metadata cleaning tools, automation scripts, small dashboards, reporting helpers, and pipelines for assembly,
+              mapping, and Nextstrain style workflows.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card">
+      <div class="pad">
+        <div class="sectionTitle">
+          <h2>Contact</h2>
+          <div class="hint">Put your real details here</div>
+        </div>
+
+        <div class="grid2">
+          <div class="mini">
+            <h3>Email</h3>
+            <p><span class="mono">your.email@example.com</span></p>
+            <p class="note">Replace with your real email.</p>
+          </div>
+          <div class="mini">
+            <h3>Links</h3>
+            <p>
+              GitHub: <a href="https://github.com/your-username" target="_blank" rel="noreferrer" class="mono">github.com/your-username</a><br/>
+              LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer" class="mono">linkedin.com/in/your-profile</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Muzzamil Ahmed • Built for GitHub Pages
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modalBackdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Project details">
+    <div class="modal">
+      <div class="modalHead">
+        <strong id="modalTitle">Project</strong>
+        <button class="x" id="modalClose">Close</button>
+      </div>
+      <div class="modalBody">
+        <p id="modalDesc"></p>
+        <div class="twoCol">
+          <div class="box">
+            <h4>Type</h4>
+            <div class="mono" id="modalType"></div>
+          </div>
+          <div class="box">
+            <h4>Typical use</h4>
+            <ul id="modalUse"></ul>
+          </div>
+        </div>
+        <div style="height:10px"></div>
+        <div class="box">
+          <h4>Notes</h4>
+          <div id="modalNotes" style="color:var(--muted);font-size:13.5px"></div>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    <p>&copy; 2025 Muzzammil Malik. Built with GitHub Pages.</p>
-  </footer>
+  <script>
+    const projects = [
+      // R Scripts
+      { name:"FASTA Sequence Extractor", type:"R Script", brief:"Extract sequences quickly from FASTA files.", use:["Extract by ID list","Clean batch exports","Speed up downstream steps"], notes:"Good for daily FASTA handling and quick extraction tasks." },
+      { name:"FASTA Header/Name Extractor", type:"R Script", brief:"Pull headers, IDs, or names from FASTA files.", use:["Audit identifiers","Standardize naming","Prepare mapping tables"], notes:"Keeps messy sequence headers from nuking your analysis later." },
+      { name:"FASTA Merger/Combiner", type:"R Script", brief:"Merge multiple FASTA files into one clean output.", use:["Combine runs","Prepare reference sets","Batch processing"], notes:"Adds consistency in merges so you do not manually copy paste files." },
+      { name:"FASTA Duplicate Remover", type:"R Script", brief:"Detect and remove duplicated sequences or IDs.", use:["De-dup datasets","Prevent inflated counts","Clean submissions"], notes:"Useful before assembly, mapping, and reporting." },
+      { name:"Sequence Length Calculator", type:"R Script", brief:"Compute lengths and summarize sequence size distribution.", use:["QC checks","Flag short reads","Basic dataset profiling"], notes:"Quick sanity check tool. Every analyst needs one." },
+      { name:"Lab ID Extractor from Phylogenetic Trees", type:"R Script", brief:"Extract lab IDs from tree outputs for tracking.", use:["Link sample IDs","Support tree interpretation","Lab reporting"], notes:"Bridges phylogeny output with real-world sample tracking." },
+      { name:"FASTA & Metadata Filter", type:"R Script", brief:"Filter sequences and metadata to match your rules.", use:["Remove incomplete entries","Align IDs across files","Standardize analysis inputs"], notes:"When metadata lies, your results suffer. This helps." },
+      { name:"Animated Graph Generator", type:"R Script", brief:"Create animated plots for trends and reporting.", use:["Weekly reporting","Trends visualization","Communication with non-technical teams"], notes:"Great for presentations and quick dashboards." },
+      { name:"PDF Tree Highlighter", type:"R Script", brief:"Highlight tree features on exported PDFs.", use:["Mark clusters","Annotate clades","Share readable visuals"], notes:"Because tree PDFs without highlights are just modern art." },
+      { name:"Epitope/Region Extractor", type:"R Script", brief:"Extract specific regions or epitopes from sequences.", use:["Targeted analysis","Region based QC","Downstream immunology steps"], notes:"Useful for focused region work and comparative studies." },
 
+      // Pipelines
+      { name:"Nexstrain Pipeline", type:"Pipeline", brief:"Pipeline setup aligned with Nextstrain style analysis.", use:["Track evolution over time","Standardized phylo builds","Public health surveillance"], notes:"Replace with your exact tooling, e.g., augur/auspice steps." },
+      { name:"Denovo Assembly Pipeline", type:"Pipeline", brief:"De novo assembly workflow for sequencing data.", use:["Assemble genomes","QC and trimming stages","Generate consensus outputs"], notes:"Add details: tools used, parameters, and data types." },
+      { name:"Reference Genome Mapping Pipeline", type:"Pipeline", brief:"Map reads to reference genome for consensus and QC.", use:["Generate consensus","Coverage checks","Variant calls support"], notes:"Add details: aligner, depth thresholds, and reporting outputs." },
+
+      // Tools
+      { name:"Metadata Annotator", type:"Tool", brief:"Annotate and standardize metadata fields.", use:["Clean datasets","Normalize columns","Reduce missing values"], notes:"Metadata is the silent boss of your workflow." },
+      { name:"Epi Week Adder Tool", type:"Tool", brief:"Add epidemiological week fields automatically.", use:["Weekly reporting","Surveillance summaries","Date normalization"], notes:"Especially helpful for public health style dashboards." },
+      { name:"ResultEase", type:"Tool", brief:"Utility to simplify result formatting and output.", use:["Cleaner deliverables","Standard reports","Less manual formatting"], notes:"Rename or expand this with what it specifically outputs." },
+      { name:"Flask Finder", type:"Tool", brief:"Find or validate flask level metadata or sample groupings.", use:["Track batches","Validate categories","Lab workflow support"], notes:"Adjust description to match your actual use case." },
+      { name:"DataNexus", type:"Tool", brief:"Data handling hub tool for combining and organizing inputs.", use:["Join datasets","Prepare analysis tables","Reduce duplication"], notes:"A central place for sanity in messy spreadsheets." },
+      { name:"Closest Match District Finder", type:"Tool", brief:"Match locations to closest district values.", use:["Fix misspellings","Standardize districts","Improve reporting accuracy"], notes:"Real world data is messy. This fights back." },
+      { name:"Message Typer", type:"Tool", brief:"Generate consistent messages or templates quickly.", use:["Lab notifications","Team updates","Standardized communication"], notes:"Small tool, big time saver." },
+      { name:"Smart Data Merger", type:"Tool", brief:"Merge datasets with logic to avoid mismatches.", use:["Combine metadata","Resolve duplicates","Prepare master sheets"], notes:"When merges go wrong, everything goes wrong. This helps." },
+      { name:"Excel Formatter", type:"Tool", brief:"Auto format Excel outputs for clean delivery.", use:["Standard output format","Readable tables","Professional reporting"], notes:"Because raw Excel dumps are a crime against humanity." },
+      { name:"R Graphs Maker", type:"Tool", brief:"Generate graphs quickly from standard inputs.", use:["Routine charts","Dashboards support","Weekly visuals"], notes:"Add the specific plot types you generate." },
+      { name:"Attendance Monitoring Tool", type:"Tool", brief:"Monitor attendance records and generate summaries.", use:["Lab or class tracking","Monthly summaries","Simple compliance reporting"], notes:"Good for lecturer and operations tasks." },
+      { name:"LJ Chart Maker", type:"Tool", brief:"Create LJ charts quickly from structured data.", use:["Automated chart exports","Standard visuals","Reporting support"], notes:"Replace LJ meaning if it stands for a specific metric." },
+      { name:"Linkage Finder", type:"Tool", brief:"Support genetic or metadata linkage searching.", use:["Find linked samples","Cluster tracking","Epidemiology analysis support"], notes:"Add details: what inputs, what outputs, and matching logic." },
+    ];
+
+    const filters = ["All","Tool","Pipeline","R Script"];
+
+    const grid = document.getElementById("projectGrid");
+    const filterBox = document.getElementById("filters");
+
+    let active = "All";
+
+    function typeTag(t){
+      if (t === "Tool") return "Tools";
+      if (t === "Pipeline") return "Pipelines";
+      return "R Scripts";
+    }
+
+    function renderFilters(){
+      filterBox.innerHTML = "";
+      filters.forEach(f=>{
+        const el = document.createElement("div");
+        el.className = "chip" + (f===active ? " active" : "");
+        el.textContent = f;
+        el.onclick = ()=>{ active = f; renderFilters(); renderGrid(); };
+        filterBox.appendChild(el);
+      })
+    }
+
+    function renderGrid(){
+      grid.innerHTML = "";
+      const list = projects.filter(p => active==="All" ? true : p.type===active);
+      list.forEach(p=>{
+        const card = document.createElement("div");
+        card.className = "proj";
+        card.innerHTML = `
+          <div class="projTop">
+            <h3>${p.name}</h3>
+            <span class="tag">${typeTag(p.type)}</span>
+          </div>
+          <p>${p.brief}</p>
+          <div class="projMeta">
+            <span class="kpi">${p.type}</span>
+            <span class="kpi">Automation</span>
+            <span class="kpi">NIH workflows</span>
+          </div>
+        `;
+        card.onclick = ()=>openModal(p);
+        grid.appendChild(card);
+      });
+
+      if (!list.length){
+        const empty = document.createElement("div");
+        empty.className = "proj";
+        empty.innerHTML = `<h3>No projects here (yet)</h3><p>Add more tools into the projects array in the code.</p>`;
+        grid.appendChild(empty);
+      }
+    }
+
+    // Modal logic
+    const backdrop = document.getElementById("modalBackdrop");
+    const closeBtn = document.getElementById("modalClose");
+    const mTitle = document.getElementById("modalTitle");
+    const mDesc = document.getElementById("modalDesc");
+    const mType = document.getElementById("modalType");
+    const mUse = document.getElementById("modalUse");
+    const mNotes = document.getElementById("modalNotes");
+
+    function openModal(p){
+      mTitle.textContent = p.name;
+      mDesc.textContent = p.brief;
+      mType.textContent = p.type;
+      mUse.innerHTML = "";
+      (p.use || []).forEach(x=>{
+        const li = document.createElement("li");
+        li.textContent = x;
+        mUse.appendChild(li);
+      });
+      mNotes.textContent = p.notes || "Add notes here.";
+      backdrop.style.display = "flex";
+    }
+    function closeModal(){ backdrop.style.display = "none"; }
+    closeBtn.onclick = closeModal;
+    backdrop.onclick = (e)=>{ if (e.target === backdrop) closeModal(); };
+    window.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeModal(); });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    renderFilters();
+    renderGrid();
+  </script>
 </body>
 </html>
