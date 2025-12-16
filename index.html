@@ -18,12 +18,19 @@
       --shadow2: 0 10px 24px rgba(15, 23, 42, 0.06);
       --radius: 18px;
       --radius2: 26px;
+
       --accent: #2563eb;
       --accent2: #0ea5e9;
       --accentSoft: rgba(37, 99, 235, 0.10);
+
+      --tool: #3b82f6;
+      --pipe: #22c55e;
+      --rs: #f59e0b;
+
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -39,6 +46,7 @@
     a{color:inherit}
     .wrap{max-width:1120px;margin:0 auto;padding:26px 18px 70px}
 
+    /* Topbar */
     .topbar{
       display:flex;align-items:center;justify-content:space-between;gap:14px;
       background: rgba(255,255,255,0.70);
@@ -49,10 +57,7 @@
       backdrop-filter: blur(10px);
       position: sticky; top: 10px; z-index: 10;
     }
-    .brand{
-      display:flex;align-items:center;gap:12px;
-      min-width: 220px;
-    }
+    .brand{display:flex;align-items:center;gap:12px;min-width: 220px;}
     .logo{
       width:40px;height:40px;border-radius: 14px;
       display:grid;place-items:center;
@@ -62,9 +67,7 @@
     .brand strong{display:block;font-size:14px;line-height:1.1}
     .brand span{display:block;font-size:12px;color:var(--muted);line-height:1.2}
 
-    .nav{
-      display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;
-    }
+    .nav{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;}
     .nav a{
       text-decoration:none;
       font-size: 13px;
@@ -82,6 +85,7 @@
       transform: translateY(-1px);
     }
 
+    /* Hero */
     .hero{
       margin-top:16px;
       display:grid;
@@ -105,11 +109,7 @@
       line-height: 1.12;
       letter-spacing: -0.8px;
     }
-    .sub{
-      margin:0;
-      color: var(--muted);
-      font-size: 15.5px;
-    }
+    .sub{margin:0;color: var(--muted);font-size: 15.5px;}
 
     .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .chip{
@@ -122,20 +122,21 @@
       font-size: 13px;
     }
     .dot{width:9px;height:9px;border-radius:50%}
-    .dot.tools{background:#3b82f6}
-    .dot.pipe{background:#22c55e}
-    .dot.r{background:#f59e0b}
+    .dot.tools{background:var(--tool)}
+    .dot.pipe{background:var(--pipe)}
+    .dot.r{background:var(--rs)}
 
     .ctaRow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .btn{
       text-decoration:none;
-      display:inline-flex;align-items:center;justify-content:center;
+      display:inline-flex;align-items:center;justify-content:center;gap:8px;
       padding:10px 14px;border-radius: 14px;
       border: 1px solid var(--border);
       background: #fff;
       color: var(--text);
-      font-weight: 600;
+      font-weight: 700;
       transition: 150ms ease;
+      font-size: 13.5px;
     }
     .btn:hover{
       transform: translateY(-1px);
@@ -147,9 +148,22 @@
       border-color: rgba(37,99,235,0.22);
     }
 
-    .profileBox{
-      display:grid;gap:12px;
+    .statsRow{
+      display:flex;gap:10px;flex-wrap:wrap;margin-top:12px
     }
+    .stat{
+      padding:10px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+      box-shadow: var(--shadow2);
+      min-width: 150px;
+    }
+    .stat strong{display:block;font-size:15px;letter-spacing:-0.2px}
+    .stat span{display:block;font-size:12.5px;color:var(--muted)}
+
+    /* Right column */
+    .profileBox{display:grid;gap:12px;}
     .profileCard{
       display:flex;align-items:center;gap:14px;
       padding:16px;
@@ -169,13 +183,8 @@
     .who h3{margin:0;font-size:16px}
     .who p{margin:4px 0 0;color:var(--muted);font-size:13.5px}
 
-    .miniGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
+    .miniGrid{display:grid;grid-template-columns: 1fr 1fr;gap:12px;}
     @media (max-width: 720px){ .miniGrid{grid-template-columns:1fr} }
-
     .mini{
       padding:14px;
       border-radius: var(--radius2);
@@ -185,6 +194,7 @@
     .mini h4{margin:0 0 6px;font-size:14px}
     .mini p{margin:0;color:var(--muted);font-size:13.5px}
 
+    /* Sections */
     section{margin-top:16px}
     .sectionHead{
       display:flex;align-items:flex-end;justify-content:space-between;gap:12px;
@@ -193,6 +203,12 @@
     .sectionHead h2{margin:0;font-size:20px;letter-spacing:-0.2px}
     .sectionHead .hint{color:var(--muted);font-size:13px}
 
+    /* Controls */
+    .controls{
+      display:flex;align-items:center;justify-content:space-between;gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
     .filters{display:flex;gap:8px;flex-wrap:wrap}
     .filter{
       padding:8px 10px;border-radius:999px;
@@ -203,6 +219,7 @@
       transition: 140ms ease;
       font-size: 13px;
       user-select:none;
+      font-weight: 700;
     }
     .filter.active{
       color: var(--text);
@@ -211,33 +228,145 @@
       background: var(--accentSoft);
     }
 
+    .rightControls{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-end;
+    }
+
+    .search{
+      position:relative;min-width: 240px;flex: 1;
+      max-width: 380px;
+    }
+    .search input{
+      width:100%;
+      padding: 10px 12px 10px 38px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      outline: none;
+      font-size: 13.5px;
+      transition: 140ms ease;
+    }
+    .search input:focus{
+      border-color: rgba(37,99,235,0.25);
+      box-shadow: 0 0 0 6px rgba(37,99,235,0.08);
+    }
+    .search svg{
+      position:absolute;left:12px;top:50%;
+      transform: translateY(-50%);
+      opacity:.55;
+    }
+
+    select{
+      padding:10px 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background:#fff;
+      font-size: 13.5px;
+      color: var(--text);
+      outline:none;
+      transition: 140ms ease;
+    }
+    select:focus{
+      border-color: rgba(37,99,235,0.25);
+      box-shadow: 0 0 0 6px rgba(37,99,235,0.08);
+    }
+
+    .toggle{
+      display:flex;gap:6px;
+      padding: 6px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.9);
+    }
+    .tbtn{
+      border:1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 800;
+      padding: 8px 10px;
+      border-radius: 12px;
+      cursor:pointer;
+      font-size: 13px;
+      transition: 140ms ease;
+    }
+    .tbtn.active{
+      color: var(--text);
+      border-color: rgba(37,99,235,0.20);
+      background: var(--accentSoft);
+    }
+
+    /* Projects */
     .projects{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
       gap:12px;
     }
+    .projects.list{
+      grid-template-columns: 1fr;
+    }
     @media (max-width: 980px){ .projects{grid-template-columns: repeat(2, 1fr);} }
     @media (max-width: 640px){ .projects{grid-template-columns: 1fr;} }
 
     .proj{
+      position:relative;
       padding:14px;
       border-radius: var(--radius2);
       border: 1px solid var(--border);
       background: #fff;
       box-shadow: var(--shadow2);
       transition: 150ms ease;
-      min-height: 150px;
-      display:flex;flex-direction:column;gap:8px;
+      min-height: 160px;
+      display:flex;flex-direction:column;gap:10px;
+      cursor:pointer;
+      outline:none;
     }
     .proj:hover{
       transform: translateY(-2px);
       border-color: rgba(37,99,235,0.22);
       box-shadow: 0 0 0 6px rgba(37,99,235,0.06), var(--shadow2);
     }
-    .projTop{
-      display:flex;align-items:flex-start;justify-content:space-between;gap:10px
+    .proj:focus{
+      box-shadow: 0 0 0 6px rgba(37,99,235,0.10), var(--shadow2);
+      border-color: rgba(37,99,235,0.30);
     }
-    .proj h3{margin:0;font-size:15.5px}
+    .proj::before{
+      content:"";
+      position:absolute;
+      left:14px; right:14px; top:12px;
+      height:3px;
+      border-radius: 999px;
+      background: var(--bar, rgba(37,99,235,0.35));
+      opacity: .75;
+    }
+    .proj.tool{ --bar: var(--tool); }
+    .proj.pipeline{ --bar: var(--pipe); }
+    .proj.rscript{ --bar: var(--rs); }
+
+    .projTop{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:10px;
+      margin-top:6px;
+    }
+    .projTitle{
+      display:flex;align-items:flex-start;gap:10px;
+      min-width: 0;
+    }
+    .projIcon{
+      width:34px;height:34px;border-radius: 14px;
+      display:grid;place-items:center;
+      border: 1px solid var(--border);
+      background: rgba(2,6,23,0.02);
+      flex: 0 0 auto;
+      margin-top:2px;
+      font-size: 16px;
+    }
+    .proj h3{
+      margin:0;
+      font-size:15.5px;
+      line-height:1.25;
+      letter-spacing:-0.2px;
+      word-break: break-word;
+    }
+
     .tag{
       font-family: var(--mono);
       font-size: 11px;
@@ -246,7 +375,12 @@
       color: var(--muted);
       background: rgba(2,6,23,0.02);
       white-space:nowrap;
+      font-weight: 700;
     }
+    .tag.tool{border-color: rgba(59,130,246,0.25); background: rgba(59,130,246,0.08); color: rgba(30,58,138,0.95);}
+    .tag.pipeline{border-color: rgba(34,197,94,0.25); background: rgba(34,197,94,0.08); color: rgba(20,83,45,0.95);}
+    .tag.rscript{border-color: rgba(245,158,11,0.28); background: rgba(245,158,11,0.10); color: rgba(120,53,15,0.95);}
+
     .proj p{margin:0;color:var(--muted);font-size:13.5px}
     .meta{margin-top:auto;display:flex;gap:8px;flex-wrap:wrap}
     .kpi{
@@ -256,12 +390,82 @@
       border: 1px solid var(--border);
       color: rgba(15,23,42,0.75);
       background: rgba(2,6,23,0.02);
+      font-weight: 700;
     }
 
-    figure{margin:0}
-    .media{
-      display:grid;gap:10px;
+    /* Publications */
+    .pubControls{
+      display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      margin-bottom: 12px;
     }
+    .pubList{display:grid;gap:12px;}
+    .pub{
+      display:grid;
+      grid-template-columns: auto 1fr auto;
+      gap:12px;
+      padding:14px;
+      border-radius: var(--radius2);
+      border: 1px solid var(--border);
+      background: #fff;
+      box-shadow: var(--shadow2);
+      align-items:flex-start;
+    }
+    @media (max-width: 720px){
+      .pub{grid-template-columns: 1fr; }
+    }
+    .pubNum{
+      width:36px;height:36px;border-radius: 16px;
+      display:grid;place-items:center;
+      border: 1px solid var(--border);
+      background: rgba(2,6,23,0.02);
+      font-family: var(--mono);
+      font-weight: 900;
+      color: rgba(15,23,42,0.8);
+      flex:0 0 auto;
+    }
+    .pubMain h3{
+      margin:0;
+      font-size: 15.5px;
+      line-height: 1.25;
+      letter-spacing:-0.2px;
+    }
+    .pubMain p{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size: 13.5px;
+    }
+    .pubRight{
+      display:flex;flex-direction:column;gap:8px;align-items:flex-end;
+    }
+    @media (max-width: 720px){
+      .pubRight{align-items:flex-start;flex-direction:row;flex-wrap:wrap}
+    }
+    .pill{
+      font-family: var(--mono);
+      font-size: 11px;
+      padding:6px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(2,6,23,0.02);
+      font-weight: 800;
+      color: rgba(15,23,42,0.78);
+      white-space: nowrap;
+    }
+    .pill.cites{
+      border-color: rgba(37,99,235,0.22);
+      background: rgba(37,99,235,0.08);
+    }
+    .pubLink{
+      font-weight: 800;
+      font-size: 13px;
+      color: rgba(37,99,235,0.95);
+      text-decoration: none;
+    }
+    .pubLink:hover{ text-decoration: underline; }
+
+    /* Media */
+    figure{margin:0}
+    .media{display:grid;gap:10px;}
     .media img{
       width:100%;
       border-radius: var(--radius2);
@@ -269,11 +473,8 @@
       background: rgba(2,6,23,0.02);
       box-shadow: var(--shadow2);
     }
-    .note{
-      color: var(--muted);
-      font-size: 13px;
-      margin:0;
-    }
+    .note{color: var(--muted);font-size: 13px;margin:0;}
+    .mono{font-family:var(--mono)}
 
     footer{
       margin-top: 18px;
@@ -312,7 +513,7 @@
       border-radius: 12px;
       padding: 8px 10px;
       cursor:pointer;
-      font-weight: 600;
+      font-weight: 800;
     }
     .modalBody{padding: 16px}
     .modalBody p{margin: 0 0 10px; color: var(--muted)}
@@ -327,7 +528,7 @@
     .box h4{margin:0 0 6px;font-size:13px}
     .box ul{margin:0;padding-left:18px;color:var(--muted);font-size:13.5px}
     .box li{margin:6px 0}
-    .mono{font-family:var(--mono)}
+
   </style>
 </head>
 
@@ -344,6 +545,7 @@
 
       <div class="nav">
         <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
         <a href="#portfolio">Portfolio Chart</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -353,12 +555,12 @@
     <div class="hero">
       <div class="card">
         <div class="pad">
-          <h1 class="headline">Bioinformatics tools built for real public health workflows.</h1>
+          <h1 class="headline">Operational Bioinformatics for Laboratory and Surveillance Outputs.</h1>
           <p class="sub">
-            I am <b>Muzzamil Ahmed</b>, a bioinformatician at <b>NIH Pakistan</b> with two years of hands on experience.
+            I am <b>Muzzamil Ahmed</b>, a bioinformatician at <b>NIH Pakistan</b> with two years of hands-on experience.
             I also work as a research scientist at <b>IIUI</b>, serve as a lecturer, and have lab experience as a molecular biologist
             in a COVID lab environment. Over the last two years, I have developed custom tools, pipelines, and R scripts that improve
-            FASTA processing, metadata quality, phylogenetics support, reporting, and day to day lab operations.
+            FASTA processing, metadata quality, phylogenetics support, reporting, and day-to-day lab operations.
           </p>
 
           <div class="chips">
@@ -368,14 +570,26 @@
             <span class="chip">Genomics • Surveillance • QC • Reporting</span>
           </div>
 
+          <div class="statsRow">
+            <div class="stat">
+              <strong><span id="projCount">0</span> projects</strong>
+              <span>Tools • Pipelines • R scripts</span>
+            </div>
+            <div class="stat">
+              <strong><span id="pubCount">0</span> publications</strong>
+              <span>Peer-reviewed research</span>
+            </div>
+          </div>
+
           <div class="ctaRow">
             <a class="btn primary" href="#projects">View projects</a>
-            <a class="btn" href="https://github.com/your-username" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn" href="#publications">View publications</a>
+            <a class="btn" href="https://github.com/Muzzamil-malick" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn" href="https://www.linkedin.com/in/muzzamil-ahmed" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
 
           <p class="note" style="margin-top:10px">
-             <span class="mono"></span>.
+            Built for clarity, speed, and fewer “why is this column empty again?” moments.
           </p>
         </div>
       </div>
@@ -399,37 +613,91 @@
           </div>
           <div class="mini">
             <h4>Typical stack</h4>
-            <p><span class="mono">Python</span>, <span class="mono">R</span>, bash, FASTA and metadata QC, phylogenetics support, reporting utilities.</p>
+            <p><span class="mono">Python</span>, <span class="mono">R</span>, bash, FASTA/metadata QC, phylogenetics support, reporting.</p>
           </div>
           <div class="mini">
             <h4>Environment</h4>
-            <p>Public health surveillance workflows, lab coordination, and routine genomics deliverables.</p>
+            <p>Public health surveillance workflows, lab coordination, routine genomics deliverables.</p>
           </div>
           <div class="mini">
             <h4>What you get</h4>
-            <p>Tools that reduce manual effort, prevent avoidable errors, and keep work consistent.</p>
+            <p>Tools that reduce manual effort, prevent avoidable errors, and keep outputs consistent.</p>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Projects -->
     <section id="projects" class="card">
       <div class="pad">
         <div class="sectionHead">
           <h2>Projects</h2>
-          <div class="hint"></div>
+          <div class="hint">Search, filter, click a card for details.</div>
         </div>
 
-        <div class="filters" id="filters"></div>
+        <div class="controls">
+          <div class="filters" id="filters"></div>
+
+          <div class="rightControls">
+            <div class="search">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2"/>
+                <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <input id="q" type="search" placeholder="Search projects (e.g., FASTA, metadata, QC)" />
+            </div>
+
+            <select id="sort" aria-label="Sort projects">
+              <option value="default">Sort: Default</option>
+              <option value="az">Sort: A → Z</option>
+              <option value="type">Sort: Type</option>
+            </select>
+
+            <div class="toggle" role="group" aria-label="View mode">
+              <button class="tbtn" id="gridBtn" type="button">Grid</button>
+              <button class="tbtn" id="listBtn" type="button">List</button>
+            </div>
+          </div>
+        </div>
+
         <div class="projects" id="projectGrid" aria-live="polite"></div>
       </div>
     </section>
 
+    <!-- Publications -->
+    <section id="publications" class="card">
+      <div class="pad">
+        <div class="sectionHead">
+          <h2>Publications</h2>
+          <div class="hint">Selected items • update links if needed</div>
+        </div>
+
+        <div class="pubControls">
+          <div class="search" style="max-width:520px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z" stroke="currentColor" stroke-width="2"/>
+              <path d="M16.5 16.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <input id="pubQ" type="search" placeholder="Search publications (title, journal, keywords)" />
+          </div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-end">
+            <select id="yearFilter" aria-label="Filter by year"></select>
+            <!-- OPTIONAL: put your Google Scholar link here -->
+            <a class="btn" href="#" target="_blank" rel="noreferrer">Google Scholar</a>
+          </div>
+        </div>
+
+        <div class="pubList" id="pubList" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
     <section id="portfolio" class="card">
       <div class="pad">
         <div class="sectionHead">
           <h2>Portfolio Chart (2024 to 2025)</h2>
-          <div class="hint"> <span class="mono"></span></div>
+          <div class="hint"><span class="mono"></span></div>
         </div>
 
         <div class="media">
@@ -437,12 +705,13 @@
             <img src="assets/portfolio-chart.png" alt="Custom Bioinformatics Tools, Pipelines and R Scripts chart" />
           </figure>
           <p class="note">
-             <span class="mono"></span>
+            Keep this chart updated as your tooling expands—people love visuals, even scientists (especially scientists).
           </p>
         </div>
       </div>
     </section>
 
+    <!-- About -->
     <section id="about" class="card">
       <div class="pad">
         <div class="sectionHead">
@@ -453,33 +722,25 @@
         <div class="miniGrid">
           <div class="mini">
             <h4>Bioinformatics and lab operations</h4>
-            <p>
-              I work at the intersection of genomics data processing and practical lab workflows.
-              My goal is to deliver dependable outputs that teams can use with confidence.
-            </p>
+            <p>I work at the intersection of genomics data processing and practical lab workflows—outputs teams can trust.</p>
           </div>
           <div class="mini">
             <h4>What I build</h4>
-            <p>
-              FASTA utilities, metadata cleaning tools, reporting automation, phylogenetics helpers, and end to end pipelines for assembly and mapping.
-            </p>
+            <p>FASTA utilities, metadata cleaning tools, reporting automation, phylogenetics helpers, and pipelines for assembly/mapping.</p>
           </div>
           <div class="mini">
             <h4>Strength</h4>
-            <p>
-              Turning repeated manual steps into reliable scripts, with consistent formatting and fewer opportunities for human error.
-            </p>
+            <p>Turning repeated manual steps into reliable scripts, with consistent formatting and fewer opportunities for human error.</p>
           </div>
           <div class="mini">
             <h4>Collaboration</h4>
-            <p>
-              I document workflows and keep outputs readable, so other analysts can reuse tools without friction.
-            </p>
+            <p>I document workflows and keep outputs readable, so other analysts can reuse tools without friction.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="card">
       <div class="pad">
         <div class="sectionHead">
@@ -491,19 +752,19 @@
           <div class="mini">
             <h4>Email</h4>
             <p class="mono">muzzamil.malick@gmail.com</p>
-            <p class="note" style="margin-top:6px">+92-313-5114222-</p>
+            <p class="note" style="margin-top:6px">+92 313 5114222</p>
           </div>
           <div class="mini">
             <h4>Profiles</h4>
             <p>
-              GitHub: <a class="mono" href="https://github.com/your-username" target="_blank" rel="noreferrer">github.com/Muzzamil-malick</a><br/>
-              LinkedIn: <a class="mono" href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noreferrer">linkedin.com/in/muzzamil-ahmed</a>
+              GitHub: <a class="mono" href="https://github.com/Muzzamil-malick" target="_blank" rel="noreferrer">github.com/Muzzamil-malick</a><br/>
+              LinkedIn: <a class="mono" href="https://www.linkedin.com/in/muzzamil-ahmed" target="_blank" rel="noreferrer">linkedin.com/in/muzzamil-ahmed</a>
             </p>
           </div>
         </div>
       </div>
     </section>
-    
+
     <footer>
       © <span id="year"></span> Muzzamil Ahmed. Built for GitHub Pages.
     </footer>
@@ -514,7 +775,7 @@
     <div class="modal">
       <div class="modalHead">
         <strong id="mTitle">Project</strong>
-        <button class="close" id="mClose">Close</button>
+        <button class="close" id="mClose" type="button">Close</button>
       </div>
       <div class="modalBody">
         <p id="mDesc"></p>
@@ -538,19 +799,22 @@
   </div>
 
   <script>
+    /* ========= DATA ========= */
+
+    // Projects (your existing list, unchanged content)
     const projects = [
-      { name:"FASTA Sequence Extractor", type:"R Script", brief:"Extract sequences quickly from FASTA files.", use:["Extract by ID list","Batch exports","Downstream prep"], notes:"A daily use utility for clean extraction workflows." },
+      { name:"FASTA Sequence Extractor", type:"R Script", brief:"Extract sequences quickly from FASTA files.", use:["Extract by ID list","Batch exports","Downstream prep"], notes:"A daily-use utility for clean extraction workflows." },
       { name:"FASTA Header and Name Extractor", type:"R Script", brief:"Pull headers and IDs from FASTA files.", use:["Audit identifiers","Build mapping tables","Standardize naming"], notes:"Makes messy FASTA headers manageable and consistent." },
       { name:"FASTA Merger and Combiner", type:"R Script", brief:"Merge multiple FASTA files into one clean output.", use:["Combine runs","Prepare reference sets","Batch processing"], notes:"Helps maintain consistency across datasets and runs." },
-      { name:"FASTA Duplicate Remover", type:"R Script", brief:"Detect and remove duplicates by sequence or ID.", use:["De duplication","Prevent inflated counts","QC"], notes:"Useful before assembly, mapping, and reporting." },
+      { name:"FASTA Duplicate Remover", type:"R Script", brief:"Detect and remove duplicates by sequence or ID.", use:["De-duplication","Prevent inflated counts","QC"], notes:"Useful before assembly, mapping, and reporting." },
       { name:"Sequence Length Calculator", type:"R Script", brief:"Compute sequence length and basic summary statistics.", use:["QC checks","Flag short sequences","Dataset profiling"], notes:"A fast sanity check before deeper analysis." },
       { name:"Lab ID Extractor from Phylogenetic Trees", type:"R Script", brief:"Extract sample and lab IDs from phylogenetic outputs.", use:["Link sample IDs","Support reporting","Track clusters"], notes:"Bridges phylogenetic output with sample tracking." },
       { name:"FASTA and Metadata Filter", type:"R Script", brief:"Filter sequences and metadata using rules you define.", use:["Remove incomplete entries","Align IDs across files","Standardize inputs"], notes:"Improves data integrity before analysis and reporting." },
       { name:"Animated Graph Generator", type:"R Script", brief:"Generate animated visual summaries for reporting.", use:["Weekly reporting","Trend visualization","Presentations"], notes:"Good for communication and quick situation awareness." },
       { name:"PDF Tree Highlighter", type:"R Script", brief:"Highlight relevant parts of exported phylogenetic trees.", use:["Mark clusters","Annotate clades","Readable visuals"], notes:"Useful when sharing trees with mixed technical audiences." },
-      { name:"Epitope and Region Extractor", type:"R Script", brief:"Extract specific genomic regions or epitopes from sequences.", use:["Targeted analysis","Region based QC","Comparative work"], notes:"Supports focused region workflows." },
+      { name:"Epitope and Region Extractor", type:"R Script", brief:"Extract specific genomic regions or epitopes from sequences.", use:["Targeted analysis","Region-based QC","Comparative work"], notes:"Supports focused region workflows." },
 
-      { name:"Nextstrain Pipeline", type:"Pipeline", brief:"Pipeline aligned with Nextstrain style analysis workflow.", use:["Track evolution over time","Standardized phylo builds","Surveillance support"], notes:"Add exact tools and steps used in your pipeline." },
+      { name:"Nextstrain Pipeline", type:"Pipeline", brief:"Pipeline aligned with Nextstrain-style analysis workflow.", use:["Track evolution over time","Standardized phylo builds","Surveillance support"], notes:"Add exact tools and steps used in your pipeline." },
       { name:"De novo Assembly Pipeline", type:"Pipeline", brief:"Assembly workflow to generate consensus sequences.", use:["Assembly","QC and trimming","Consensus outputs"], notes:"Add details: software, parameters, and input types." },
       { name:"Reference Genome Mapping Pipeline", type:"Pipeline", brief:"Mapping workflow for coverage QC and consensus support.", use:["Consensus generation","Coverage checks","Variant support"], notes:"Add aligner and thresholds for full clarity." },
 
@@ -559,68 +823,187 @@
       { name:"ResultEase", type:"Tool", brief:"Simplify result formatting for consistent deliverables.", use:["Standard reports","Cleaner output tables","Less manual work"], notes:"Rename or expand with what it exports and how." },
       { name:"Flask Finder", type:"Tool", brief:"Support tracking of batches and sample groupings.", use:["Batch tracking","Validation checks","Lab workflow support"], notes:"Adjust description to your exact use case." },
       { name:"DataNexus", type:"Tool", brief:"Data utility hub for combining and organizing inputs.", use:["Join datasets","Prepare tables","Reduce duplication"], notes:"Centralizes repetitive data preparation tasks." },
-      { name:"Closest Match District Finder", type:"Tool", brief:"Match locations to correct district values.", use:["Fix spelling","Standardize districts","Improve reporting"], notes:"Helps turn messy real world location fields into clean data." },
+      { name:"Closest Match District Finder", type:"Tool", brief:"Match locations to correct district values.", use:["Fix spelling","Standardize districts","Improve reporting"], notes:"Turns messy location fields into clean data." },
       { name:"Message Typer", type:"Tool", brief:"Generate consistent message templates quickly.", use:["Lab notifications","Team updates","Standard wording"], notes:"Small tool, high impact for daily operations." },
       { name:"Smart Data Merger", type:"Tool", brief:"Merge datasets with rules to reduce mismatches.", use:["Combine metadata","Resolve duplicates","Master sheets"], notes:"Prevents common merge failures and mismatched identifiers." },
-      { name:"Excel Formatter", type:"Tool", brief:"Auto format Excel outputs for readable delivery.", use:["Professional reports","Consistent tables","Fast export"], notes:"Turns raw exports into ready to share files." },
-      { name:"R Graphs Maker", type:"Tool", brief:"Generate routine graphs from standard inputs.", use:["Routine charts","Reporting visuals","Dashboards support"], notes:"Add the graph types you support for stronger clarity." },
+      { name:"Excel Formatter", type:"Tool", brief:"Auto-format Excel outputs for readable delivery.", use:["Professional reports","Consistent tables","Fast export"], notes:"Turns raw exports into ready-to-share files." },
+      { name:"R Graphs Maker", type:"Tool", brief:"Generate routine graphs from standard inputs.", use:["Routine charts","Reporting visuals","Dashboard support"], notes:"Add the graph types you support for stronger clarity." },
       { name:"Attendance Monitoring Tool", type:"Tool", brief:"Monitor attendance and generate summaries.", use:["Class tracking","Lab staff tracking","Monthly summaries"], notes:"Useful for teaching and operations responsibilities." },
       { name:"LJ Chart Maker", type:"Tool", brief:"Create LJ charts quickly from structured data.", use:["Automated charts","Standard visuals","Reporting support"], notes:"Replace LJ meaning with your real definition if needed." },
       { name:"Linkage Finder", type:"Tool", brief:"Support linkage searching across samples and metadata.", use:["Find linked samples","Cluster tracking","Epidemiology support"], notes:"Add details: inputs, outputs, and matching logic." }
     ];
 
-    const filters = ["All","Tool","Pipeline","R Script"];
+    // Publications (added from your screenshot).
+    // Add your actual paper links (DOI / PubMed / Journal / Google Scholar) in "link".
+    const publications = [
+      {
+        title: "Enhanced starch hydrolysis by α-amylase using copper oxide nanowires",
+        authors: "K Ahmad, S Khan, MT Yasin, S Hussain, R Ahmad, N Ahmad, M Ahmed, …",
+        venue: "Applied Nanoscience 11 (7), 2059–2071",
+        year: 2021,
+        cites: 16,
+        link: "#"
+      },
+      {
+        title: "Enhancement effect of AgO nanoparticles on fermentative cellulase activity from thermophilic Bacillus subtilis Ag-PQ",
+        authors: "S Hussain, MT Yasin, K Ahmad, S Khan, R Ahmad, J Khan, A Ghani, …",
+        venue: "Journal of Genetic Engineering and Biotechnology 21 (1), 151",
+        year: 2023,
+        cites: 15,
+        link: "#"
+      },
+      {
+        title: "Molecular characterization of rotavirus indicates predominance of G9P[4] genotype among children with acute gastroenteritis: First report after vaccine introduction in Pakistan",
+        authors: "M Usman, MS Rana, M Salman, MM Alam, A Khurshid, M Umair, N Ullah, …",
+        venue: "Journal of Medical Virology 96 (6), e29761",
+        year: 2024,
+        cites: 3,
+        link: "#"
+      },
+      {
+        title: "Molecular epidemiology of wild poliovirus type 1 and shift in the historical reservoir areas of Pakistan during 2019–2022",
+        authors: "Y Arshad, N Mehmood, MM Alam, A Khurshid, R Akhtar, G Mujtaba, …",
+        venue: "The Journal of Infectious Diseases 231 (2), 471–479",
+        year: 2025,
+        cites: 2,
+        link: "#"
+      },
+      {
+        title: "Molecular Detection of Non-Polio Enteroviruses and Emergence of Novel Enterovirus D111 in Stool Samples From Children Reported With Acute Flaccid Paralysis Symptoms During 2021 …",
+        authors: "MN Adil, MA Abbas, MM Alam, MS Rana, M Salman, M Umair, A Khurshid, …",
+        venue: "Journal of Medical Virology 97 (9), e70566",
+        year: 2025,
+        cites: 0,
+        link: "#"
+      }
+    ];
+
+    /* ========= PROJECTS UI ========= */
+
     const grid = document.getElementById("projectGrid");
     const filterBox = document.getElementById("filters");
-    let active = "All";
+    const q = document.getElementById("q");
+    const sortSel = document.getElementById("sort");
+    const gridBtn = document.getElementById("gridBtn");
+    const listBtn = document.getElementById("listBtn");
 
-    function typeLabel(t){
+    let active = "All";
+    let viewMode = localStorage.getItem("viewMode") || "grid";
+
+    function iconForType(t){
+      if (t === "Tool") return "🧰";
+      if (t === "Pipeline") return "🧪";
+      return "📜";
+    }
+    function classForType(t){
+      if (t === "Tool") return "tool";
+      if (t === "Pipeline") return "pipeline";
+      return "rscript";
+    }
+    function labelForType(t){
       if (t === "Tool") return "Tools";
       if (t === "Pipeline") return "Pipelines";
       return "R Scripts";
     }
 
+    function computeCounts(){
+      const counts = { All: projects.length, Tool: 0, Pipeline: 0, "R Script": 0 };
+      projects.forEach(p => counts[p.type] = (counts[p.type] || 0) + 1);
+      return counts;
+    }
+
     function renderFilters(){
+      const counts = computeCounts();
+      const filters = ["All","Tool","Pipeline","R Script"];
       filterBox.innerHTML = "";
       filters.forEach(f=>{
         const el = document.createElement("div");
         el.className = "filter" + (f===active ? " active" : "");
-        el.textContent = f;
+        el.textContent = `${f} (${counts[f] || 0})`;
         el.onclick = ()=>{ active = f; renderFilters(); renderGrid(); };
         filterBox.appendChild(el);
       });
     }
 
+    function getFiltered(){
+      const query = (q.value || "").trim().toLowerCase();
+      let list = projects.filter(p => active==="All" ? true : p.type===active);
+
+      if (query){
+        list = list.filter(p => {
+          const blob = `${p.name} ${p.type} ${p.brief} ${(p.use||[]).join(" ")} ${p.notes||""}`.toLowerCase();
+          return blob.includes(query);
+        });
+      }
+
+      const sort = sortSel.value;
+      if (sort === "az"){
+        list = [...list].sort((a,b)=>a.name.localeCompare(b.name));
+      } else if (sort === "type"){
+        const order = { "Tool": 1, "Pipeline": 2, "R Script": 3 };
+        list = [...list].sort((a,b)=>(order[a.type]||9)-(order[b.type]||9) || a.name.localeCompare(b.name));
+      }
+      return list;
+    }
+
+    function applyView(){
+      const isList = viewMode === "list";
+      grid.classList.toggle("list", isList);
+      gridBtn.classList.toggle("active", !isList);
+      listBtn.classList.toggle("active", isList);
+      localStorage.setItem("viewMode", viewMode);
+    }
+
     function renderGrid(){
       grid.innerHTML = "";
-      const list = projects.filter(p => active==="All" ? true : p.type===active);
+      const list = getFiltered();
 
       list.forEach(p=>{
         const card = document.createElement("div");
-        card.className = "proj";
+        const tClass = classForType(p.type);
+        card.className = `proj ${tClass}`;
+        card.setAttribute("role","button");
+        card.setAttribute("tabindex","0");
+        card.setAttribute("aria-label", `Open project: ${p.name}`);
+
         card.innerHTML = `
           <div class="projTop">
-            <h3>${p.name}</h3>
-            <span class="tag">${typeLabel(p.type)}</span>
+            <div class="projTitle">
+              <div class="projIcon">${iconForType(p.type)}</div>
+              <div>
+                <h3>${p.name}</h3>
+                <p>${p.brief}</p>
+              </div>
+            </div>
+            <span class="tag ${tClass}">${labelForType(p.type)}</span>
           </div>
-          <p>${p.brief}</p>
+
           <div class="meta">
             <span class="kpi">${p.type}</span>
             <span class="kpi">Automation</span>
             <span class="kpi">QC</span>
           </div>
         `;
+
         card.onclick = ()=>openModal(p);
+        card.onkeydown = (e)=>{ if(e.key === "Enter" || e.key === " "){ e.preventDefault(); openModal(p); } };
         grid.appendChild(card);
       });
 
       if (!list.length){
         const empty = document.createElement("div");
         empty.className = "proj";
-        empty.innerHTML = `<h3>No projects to show</h3><p>Add more items to the projects list in the code.</p>`;
+        empty.innerHTML = `<h3>No matches</h3><p>Try a different filter or search keyword.</p>`;
         grid.appendChild(empty);
       }
     }
+
+    q.addEventListener("input", renderGrid);
+    sortSel.addEventListener("change", renderGrid);
+    gridBtn.addEventListener("click", ()=>{ viewMode="grid"; applyView(); });
+    listBtn.addEventListener("click", ()=>{ viewMode="list"; applyView(); });
+
+    /* ========= MODAL ========= */
 
     const backdrop = document.getElementById("backdrop");
     const closeBtn = document.getElementById("mClose");
@@ -648,9 +1031,78 @@
     backdrop.onclick = (e)=>{ if (e.target === backdrop) closeModal(); };
     window.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeModal(); });
 
+    /* ========= PUBLICATIONS UI ========= */
+
+    const pubList = document.getElementById("pubList");
+    const pubQ = document.getElementById("pubQ");
+    const yearFilter = document.getElementById("yearFilter");
+
+    function buildYearFilter(){
+      const years = [...new Set(publications.map(p=>p.year))].sort((a,b)=>b-a);
+      yearFilter.innerHTML = `<option value="all">All years</option>` + years.map(y=>`<option value="${y}">${y}</option>`).join("");
+    }
+
+    function getPubs(){
+      const query = (pubQ.value || "").trim().toLowerCase();
+      const y = yearFilter.value;
+
+      return publications.filter(p=>{
+        const okYear = (y === "all") ? true : String(p.year) === String(y);
+        if (!okYear) return false;
+        if (!query) return true;
+        const blob = `${p.title} ${p.authors} ${p.venue} ${p.year}`.toLowerCase();
+        return blob.includes(query);
+      }).sort((a,b)=>b.year-a.year || (b.cites||0)-(a.cites||0));
+    }
+
+    function renderPubs(){
+      pubList.innerHTML = "";
+      const list = getPubs();
+
+      list.forEach((p, idx)=>{
+        const cites = (p.cites && p.cites > 0) ? `${p.cites} cites` : `0 cites`;
+        const link = p.link && p.link !== "#" ? `<a class="pubLink" href="${p.link}" target="_blank" rel="noreferrer">Open</a>` : `<span class="pill">Add link</span>`;
+
+        const el = document.createElement("div");
+        el.className = "pub";
+        el.innerHTML = `
+          <div class="pubNum">${idx+1}</div>
+          <div class="pubMain">
+            <h3>${p.title}</h3>
+            <p><span class="mono">${p.authors}</span></p>
+            <p>${p.venue}</p>
+          </div>
+          <div class="pubRight">
+            <span class="pill">${p.year}</span>
+            <span class="pill cites">${cites}</span>
+            ${link}
+          </div>
+        `;
+        pubList.appendChild(el);
+      });
+
+      if (!list.length){
+        const empty = document.createElement("div");
+        empty.className = "pub";
+        empty.innerHTML = `<div class="pubMain"><h3>No matches</h3><p>Try a different keyword or year.</p></div>`;
+        pubList.appendChild(empty);
+      }
+    }
+
+    pubQ.addEventListener("input", renderPubs);
+    yearFilter.addEventListener("change", renderPubs);
+
+    /* ========= INIT ========= */
+
     document.getElementById("year").textContent = new Date().getFullYear();
+    document.getElementById("projCount").textContent = projects.length;
+    document.getElementById("pubCount").textContent = publications.length;
+
+    applyView();
     renderFilters();
     renderGrid();
+    buildYearFilter();
+    renderPubs();
   </script>
 </body>
 </html>
