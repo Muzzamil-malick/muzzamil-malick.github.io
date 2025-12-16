@@ -1061,7 +1061,7 @@
 
       list.forEach((p, idx)=>{
         const cites = (p.cites && p.cites > 0) ? `${p.cites} cites` : `0 cites`;
-        const link = p.link && p.link !== "#" ? `<a class="pubLink" href="${p.link}" target="_blank" rel="noreferrer">Open</a>` : `<span class="pill">Add link</span>`;
+        const link = p.link && p.link !== "#" ? `<a class="pubLink" href="${p.link}" target="_blank" rel="noreferrer">Open</a>` : `<span class="pill"></span>`;
 
         const el = document.createElement("div");
         el.className = "pub";
